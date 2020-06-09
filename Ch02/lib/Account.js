@@ -15,7 +15,7 @@ function Account(bank, id, name, money) {
         this.money -= money;
     }
 
-    this.show     = function(){
+    this.show = function(){
         document.write('--------------------------<br />');
         document.write('은 행 명 : '+this.bank+'<br />');
         document.write('계좌번호 : '+this.id+'<br />');
