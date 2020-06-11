@@ -8,13 +8,12 @@
         $(function(){
 
             var btn = $('button');
-            var ul  = $('ul');            
+            var ul  = $('ul');
             var count = 1;
 
             // 추가버튼
             btn.eq(0).click(function(){
-
-                ul.append('<li>아이템 '+count+'</li>');
+                ul.append('<li>아이템 '+count+'</li>');                
                 count++;
             });
 
@@ -23,6 +22,11 @@
 
                 ul.children().last().remove();
                 count--;
+
+                if(count < 1){
+                    count = 1;                    
+                }
+                
             });
         });
 
