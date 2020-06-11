@@ -54,9 +54,15 @@
                 }, 1000);
             });
             
-            button.eq(4).click(function(){});
+            button.eq(4).click(function(){
+                box3.animate({
+                    'height': '0'
+                    }, 500);
+            });
             
-            button.eq(5).click(function(){});
+            button.eq(5).click(function(){
+                box3.animate({'height': '200px'}, 500);
+            });
 
 
         });
