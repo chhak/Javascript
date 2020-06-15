@@ -59,23 +59,38 @@
                         $(this).animate({'left': '0'}, 3000);
                     }
                 });
-
             });
             
             box.eq(2).click(function(){
-
                 $(this).animate({'top':'400px', 'left':'0'}, {duration: 1000, complete: function(){
                     // 3사분면에 도착했을때 
                     $(this).animate({'left':'700px'}, 3000, function(){
                         // 4사분면에 도착했을때
-                        $(this).animate({}, 2000, function(){});
+                        $(this).animate({'top':'0'}, 2000, function(){
+                            // 1사분면에 도착했을때
+                            $(this).animate({'left':'0'}, 3000, function(){
+                                // 2사분면에 도착했을때
+                                $(this).animate({'top':'230px'}, 2000);
+                            });
+                        });
                     });
                 }});
-
-
             });
             
-            box.eq(3).click(function(){});
+            box.eq(3).click(function(){
+
+                $(this).animate({
+                    'top':'400px'
+                }, 1000).animate({
+                    'left':'700px'
+                }, 1000).animate({
+                    'top':'0'
+                }, 1000).animate({
+                    'left':'0'
+                }, 1000).animate({
+                    'top':'340px'
+                }, 1000);
+            });
         });
 
 
