@@ -45,6 +45,43 @@
             });
 
             // 직원등록
+            $('input[type=submit]').click(function(){
+
+                var uid   = $('input[name=uid]').val();
+                var name  = $('input[name=name]').val();
+                var hp    = $('input[name=hp]').val();
+                var pos   = $('select[name=pos]').val();
+                var dep   = $('select[name=dep]').val();
+                var rdate = $('input[name=rdate]').val();    
+
+                var json  = {"uid": uid, 
+                             "name": name, 
+                             "hp": hp, 
+                             "pos": pos, 
+                             "dep": dep, 
+                             "rdate": rdate};
+
+                var url = "http://localhost:8080/DataToJs/insert.jsp";
+
+                $.post(url, json, function(data){
+                                        
+                    if(data.result == 1){
+                        // DB 등록 후 DB와 일치된 데이터 표현을 위한 추가적인 태그삽입                 
+                        list.append('<tr></tr>');
+                        list.find('tr').last().append('<td>'+uid+'</td>');
+                        list.find('tr').last().append('<td>'+name+'</td>');
+                        list.find('tr').last().append('<td>'+hp+'</td>');
+                        list.find('tr').last().append('<td>'+pos+'</td>');
+                        list.find('tr').last().append('<td>'+dep+'</td>');
+                        list.find('tr').last().append('<td>'+rdate+'</td>');
+                        list.find('tr').last().append('<td><a href="#">삭제</a></td>');
+                    }else{
+                        alert('데이터 추가 실패');
+                    }
+
+                });
+            });
+
 
             // 직원삭제 - 동적 태그에 대한 이벤트처리는 on() 함수로 구현
             $(document).on('click', '.list a', function(e){
