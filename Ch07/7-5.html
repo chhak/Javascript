@@ -19,12 +19,11 @@
                     type: 'get',
                     dataType: 'xml',
                     success: function(data){
-
-                        var members = $(data).find('members');
                         
+                        //var members = $(data).children().children(); 왜 children 두번?
+                        var members = $(data).find('members');
 
                         members.children().each(function(){
-
                             var uid   = $(this).find('uid').text();
                             var name  = $(this).find('name').text();
                             var hp    = $(this).children().eq(2).text();
@@ -39,16 +38,10 @@
                             table.find('tr').last().append('<td>'+pos+'</td>');
                             table.find('tr').last().append('<td>'+dep+'</td>');
                             table.find('tr').last().append('<td>'+rdate+'</td>');
-
                         });
-
-
                     }
-
                 });
-
             });
-
         });
     </script>
 
@@ -64,8 +57,7 @@
             <th>직급</th>
             <th>부서</th>
             <th>입사일</th>
-        </tr>
-        <tr></tr>
+        </tr>        
         
     </table>
     
