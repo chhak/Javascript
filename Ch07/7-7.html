@@ -47,8 +47,27 @@
             // 직원등록
 
             // 직원삭제 - 동적 태그에 대한 이벤트처리는 on() 함수로 구현
-            $(document).on('click', '.list a', function(){
-                alert('삭제!!!');
+            $(document).on('click', '.list a', function(e){
+                e.preventDefault();
+
+                var tr  = $(this).parent().parent();
+                var uid = tr.children().eq(0).text();
+                var json = {"uid": uid};
+                var url = "http://localhost:8080/DataToJs/delete.jsp";
+
+                $.get(url, json, function(data){
+
+                    if(data.result == 1){
+                        alert('데이터가 삭제 되었습니다.');
+                        // 데이터베이스와 일치된 데이터 표현을 위한 추가적인 태그삭제
+                        tr.remove();
+
+                    }else{
+                        alert('데이터가 삭제가 실패했습니다.');
+                    }
+                });
+
+
             });
 
         });
